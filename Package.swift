@@ -30,8 +30,8 @@ let package = Package(
         ),
     ]
 )
-var ffmpegKitPath = FileManager.default.currentDirectoryPath + "/FFmpegKit"
-if !FileManager.default.fileExists(atPath: ffmpegKitPath), let url = URL(string: #file) {
+var ffmpegKitPath: String?
+if let url = URL(string: #file) {
     let path = url.deletingLastPathComponent().path
     ffmpegKitPath = path + "/FFmpegKit"
 //    if !FileManager.default.fileExists(atPath: ffmpegKitPath) {
@@ -39,7 +39,7 @@ if !FileManager.default.fileExists(atPath: ffmpegKitPath), let url = URL(string:
 //    }
 }
 
-if FileManager.default.fileExists(atPath: ffmpegKitPath + "/Package.swift") {
+if let ffmpegKitPath, FileManager.default.fileExists(atPath: ffmpegKitPath + "/Package.swift") {
     package.dependencies += [
         .package(path: ffmpegKitPath),
     ]
