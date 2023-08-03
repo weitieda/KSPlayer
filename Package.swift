@@ -30,22 +30,21 @@ let package = Package(
         ),
     ]
 )
-package.dependencies += [
-    .package(url: "https://github.com/kingslay/FFmpegKit.git", from: "6.0.1"),
-]
-//var ffmpegKitPath = FileManager.default.currentDirectoryPath + "/FFmpegKit"
-//if !FileManager.default.fileExists(atPath: ffmpegKitPath), let url = URL(string: #file) {
-//    let path = url.deletingLastPathComponent().path
-//    ffmpegKitPath = path + "/FFmpegKit"
+var ffmpegKitPath = FileManager.default.currentDirectoryPath + "/FFmpegKit"
+if !FileManager.default.fileExists(atPath: ffmpegKitPath), let url = URL(string: #file) {
+    let path = url.deletingLastPathComponent().path
+    ffmpegKitPath = path + "/FFmpegKit"
 //    if !FileManager.default.fileExists(atPath: ffmpegKitPath) {
 //        ffmpegKitPath = path + "/../FFmpegKit"
 //    }
-//}
-//
-//if FileManager.default.fileExists(atPath: ffmpegKitPath + "/Package.swift") {
-//    package.dependencies += [
-//        .package(path: ffmpegKitPath),
-//    ]
-//} else {
-//
-//}
+}
+
+if FileManager.default.fileExists(atPath: ffmpegKitPath + "/Package.swift") {
+    package.dependencies += [
+        .package(path: ffmpegKitPath),
+    ]
+} else {
+    package.dependencies += [
+        .package(url: "https://github.com/kingslay/FFmpegKit.git", from: "6.0.1"),
+    ]
+}
