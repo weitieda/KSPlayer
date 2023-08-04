@@ -37,7 +37,8 @@ if !FileManager.default.fileExists(atPath: ffmpegKitPath), let url = URL(string:
 }
 
 if FileManager.default.fileExists(atPath: ffmpegKitPath + "/Package.swift") {
-     package.dependencies += [
+   
+}
+  package.dependencies += [
         .package(path: "./FFmpegKit"),
     ]
-}
