@@ -40,5 +40,5 @@ if FileManager.default.fileExists(atPath: ffmpegKitPath + "/Package.swift") {
    
 }
   package.dependencies += [
-        .package(path: ffmpegKitPath),
+        .package(name: "FFmpegKit", path: ffmpegKitPath)
     ]
