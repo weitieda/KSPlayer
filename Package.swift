@@ -30,7 +30,7 @@ let package = Package(
         ),
     ]
 )
-var ffmpegKitPath: String? = FileManager.default.currentDirectoryPath + "/FFmpegKit121"
+var ffmpegKitPath: String? = FileManager.default.currentDirectoryPath + "/FFmpegKit"
 
 
 if let ffmpegKitPath, FileManager.default.fileExists(atPath: ffmpegKitPath + "/Package.swift") {
