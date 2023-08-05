@@ -36,9 +36,12 @@ if !FileManager.default.fileExists(atPath: ffmpegKitPath), let url = URL(string:
     ffmpegKitPath = path + "/FFmpegKit"
 }
 
-if FileManager.default.fileExists(atPath: ffmpegKitPath + "/Package.swift") {
-   
-}
-  package.dependencies += [
-        .package(name: "FFmpegKit", path: ffmpegKitPath)
+if FileManager.default.fileExists(atPath: ffmpegKitPath + "/Package.swift"), !ffmpegKitPath.contains("checkouts") {
+    package.dependencies += [
+        .package(path: ffmpegKitPath)
     ]
+} else {
+    package.dependencies += [
+        .package(url: "https://github.com/kingslay/FFmpegKit.git", from: "6.0.1"),
+    ]
+}
