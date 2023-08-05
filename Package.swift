@@ -38,7 +38,7 @@ if !FileManager.default.fileExists(atPath: ffmpegKitPath), let url = URL(string:
 
 if FileManager.default.fileExists(atPath: ffmpegKitPath + "/Package.swift"),
    // 解决用xcode引入spm的时候，依赖关系出错的问题
-   !ffmpegKitPath.contains("checkouts/")
+   !ffmpegKitPath.contains("/checkouts/")
 {
     package.dependencies += [
         .package(path: ffmpegKitPath),
